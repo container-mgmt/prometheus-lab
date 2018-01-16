@@ -1,0 +1,22 @@
+groups:
+  - name: example-rules
+    interval: 30s # defaults to global interval
+    rules:
+      - alert: "No my_metric metric"
+        expr: absent(my_metric)
+        annotations:
+          miqTarget: "ExtManagementSystem"
+          severity: "ERROR"
+          url: "https://www.example.com/too_many_pods_fixing_instructions"
+          message: "Missing Metric"
+  - name: group2
+    interval: 30s # defaults to global interval
+    rules:
+      - alert: "only metric name"
+        expr: my_metric > 10
+        for: 1m
+        annotations:
+          miqTarget: "ExtManagementSystem"
+          severity: "ERROR"
+          url: "https://www.example.com/too_many_pods_fixing_instructions"
+          message: "only metric name"
